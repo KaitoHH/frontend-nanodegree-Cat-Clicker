@@ -9,65 +9,6 @@
 <body>
 
 </body>
-<script type="text/javascript">
-    cat = function(id, name) {
-        this.id = id;
-        this.name = name;
-        this.counter = 0;
-    }
-    cat.prototype.click = function() {
-        this.counter++;
-    };
-    var catArray = [
-        new cat("cat01", "01"),
-        new cat("cat02", "02"),
-        new cat("cat03", "03"),
-        new cat("cat04", "04"),
-        new cat("cat05", "05")
-    ];
-
-    function createCatList() {
-        var ul = document.createElement("ul");
-        catArray.forEach(function(cat) {
-            var li = document.createElement("li");
-            li.innerHTML = '<a href="#">' + cat.name + '</a>';
-            li.addEventListener('click', function() {
-                createDiv(cat);
-            });
-            ul.appendChild(li);
-        });
-        document.body.appendChild(ul);
-    }
-    createCatList();
-
-    function createDiv(cat) {
-        var el = document.getElementsByClassName('cat-section')[0];
-        if (el) {
-            document.body.removeChild(el);
-        }
-
-        var div = document.createElement("div");
-        div.setAttribute("class", "cat-section");
-
-        var h2 = document.createElement("h2");
-        h2.innerHTML = cat.name;
-
-        var p = document.createElement("p");
-        p.setAttribute("id", cat.id + "click");
-        p.innerHTML = cat.counter;
-
-        var img = document.createElement("img");
-        img.setAttribute("src", "catImg/" + cat.name + ".jpg");
-        img.addEventListener('click', function() {
-            cat.click();
-            p.innerHTML = cat.counter;
-        }, false);
-
-        div.appendChild(h2);
-        div.appendChild(img);
-        div.appendChild(p);
-        document.body.appendChild(div);
-    }
-</script>
+<script type="text/javascript" src="app.js"></script>
 
 </html>
