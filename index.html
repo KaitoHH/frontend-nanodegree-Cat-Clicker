@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Cat Clicker</title>
+
+</head>
+
+<body>
+    <script type="text/javascript">
+        cat = function(id, name) {
+            this.id = id;
+            this.name = name;
+            this.counter = 0;
+        }
+        cat.prototype.click = function() {
+            this.counter++;
+        };
+        catArray = [new cat("cat01", "01"), new cat("cat02", "02")];
+        catArray.forEach(function(cat) {
+            var div = document.createElement("div");
+            div.setAttribute("class", "cat-section");
+
+            var h2 = document.createElement("h2");
+            h2.innerHTML = cat.name;
+
+            var p = document.createElement("p");
+            p.setAttribute("id", cat.id + "click");
+            p.innerHTML = 0;
+
+            var img = document.createElement("img");
+            img.setAttribute("src", "catImg/" + cat.name + ".jpg");
+            img.addEventListener('click', function() {
+                cat.click();
+                p.innerHTML = cat.counter;
+            }, false);
+
+            div.appendChild(h2);
+            div.appendChild(img);
+            div.appendChild(p);
+            document.body.appendChild(div);
+        });
+    </script>
+</body>
+
+</html>
